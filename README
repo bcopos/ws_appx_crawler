@@ -1,0 +1,21 @@
+Windows Phone Store Appx Apps Crawler
+===============
+
+Crawler that gathers Appx Apps from Windows Phone Store
+
+
+Dependencies
+-------
+
+- scrapy
+- pymongo (will add soon)
+
+
+How?
+-----
+
+Bing search engine indexes Windows Phone Store, making it easy to find appx applications by using the following query string:
+`site:windowsphone.com AppxManifest.xml`
+
+The crawler gets all the links resulting from the above query and downloads the application package found at that location
+
