@@ -3,9 +3,11 @@ from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
 from scrapy.selector import Selector
 from windows_store_appx.items import WindowsStoreAppxItem
 
+import time, random
+
 query_string = "site%3Awindowsphone.com+AppxManifest.xml"
 
-class MySpider(CrawlSpider):
+class WSAppxSpider(CrawlSpider):
 	name = "appx"
 	allowed_domains = ["bing.com"]
 	start_urls = ["http://www.bing.com/search?q="+query_string]
@@ -13,6 +15,10 @@ class MySpider(CrawlSpider):
 	# Next page button: <a href title=Next, class="sb_pagN">
 	# '//a[re:test(@title, "Next ")]//@href'
 	rules = (Rule(LxmlLinkExtractor(restrict_xpaths=('//a[contains(@title, "Next ")]')), callback='parse_page', follow=True),)
+
+	def __init__(self, outputfile=None, *args, **kwargs):
+		super(WSAppxSpider, self).__init__(*args, **kwargs)
+		self.outputfile = outputfile
 
 	def parse_page(self, response):
 		sel = Selector(response)
@@ -23,5 +29,13 @@ class MySpider(CrawlSpider):
 			item = WindowsStoreAppxItem()
 			item['link'] = app
 			appx_list.append(item)
-		return appx_list
 
+			if outputfile != "":
+				f = open(outputfile, 'a')
+				f.write(app+"\n")
+				f.close()
+
+		# random sleep to avoid detection
+		time.sleep(random.randint(0, 30))
+
+		return appx_list
