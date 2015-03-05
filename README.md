@@ -19,5 +19,5 @@ The crawler gets all the links resulting from the above query and downloads the 
 Dependencies
 -------
 
-- scrapy
+- [scrapy](http://scrapy.org/)
 
