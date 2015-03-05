@@ -4,7 +4,7 @@ Windows Phone Store Appx Apps Crawler
 Crawler that gathers links for .appx Apps from Windows Phone Store (to download apps, 'click' on links and it will automatically download app)
 
 To run:
-`scrapy crawl appx -a [/path/and/name_of_output_file]`
+`scrapy crawl appx -a outputfile=[/path/and/name_of_output_file]`
 
 How?
 -----

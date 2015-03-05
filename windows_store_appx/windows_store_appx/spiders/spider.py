@@ -25,14 +25,14 @@ class WSAppxSpider(CrawlSpider):
 		links = sel.xpath('//a[contains(@href, "xap")]')
 		appx_list = []
 		for link in links:
-			app = link.xpath('@href').extract()
+			app = link.xpath('@href').extract()[0]
 			item = WindowsStoreAppxItem()
 			item['link'] = app
 			appx_list.append(item)
 
-			if outputfile != "":
-				f = open(outputfile, 'a')
-				f.write(app+"\n")
+			if self.outputfile != "":
+				f = open(self.outputfile, 'a')
+				f.write(app.encode('utf-8').strip()+"\n")
 				f.close()
 
 		# random sleep to avoid detection
