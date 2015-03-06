@@ -36,9 +36,7 @@ def main(linksfile):
 		apphash += ".appx"
 
 		# translate link and download app using wget
-		unicode_link = link.decode("unicode-escape")
-		cmd = "wget" + " --header=\"" + ACCEPT_HEADER + "\"" + " --user-agent=\"" + USER_AGENT + "\"" + " -O " + apphash + " " + unicode_link
-		print cmd
+		cmd = "wget" + " --header=\"" + ACCEPT_HEADER + "\"" + " --user-agent=\"" + USER_AGENT + "\"" + " -O " + apphash + " " + link
 		p = subprocess.call(cmd, shell=True)
 		if p != 0:
 			print "wget failed on link " + str(link)
