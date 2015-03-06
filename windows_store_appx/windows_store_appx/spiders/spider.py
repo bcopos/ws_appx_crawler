@@ -1,9 +1,19 @@
+'''
+	Scrapy CrawlSpider for bing.com results based on search for appx apps in the windows phone store
+
+	Author: Bogdan Copos, bcopos@ucdavis.edu
+'''
+
+
+
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.contrib.linkextractors.lxmlhtml import LxmlLinkExtractor
 from scrapy.selector import Selector
 from windows_store_appx.items import WindowsStoreAppxItem
 
 import time, random
+
+
 
 query_string = "site%3Awindowsphone.com+AppxManifest.xml"
 

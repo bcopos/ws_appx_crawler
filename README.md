@@ -1,7 +1,7 @@
 Windows Phone Store Appx Apps Crawler
 ===============
 
-Crawler that gathers links for .appx Apps from Windows Phone Store (to download apps, 'click' on links and it will automatically download app)
+Crawler that gathers links for .appx Apps from Windows Phone Store (to download apps, use download.py `./download.py -i [/path/to/linksfile]`)
 
 To run:
 `scrapy crawl appx -a outputfile=[/path/and/name_of_output_file]`
@@ -20,4 +20,4 @@ Dependencies
 -------
 
 - [scrapy](http://scrapy.org/)
-
+- [wget](https://www.gnu.org/software/wget/)
